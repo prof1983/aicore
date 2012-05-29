@@ -1,5 +1,12 @@
 AiCore - core of AI system
 
+
+=== .gitignore ===
+
+*.user
+/.gitignore
+/.gitmodules
+
 === .gitmodules file for local repository ===
 
 [submodule "Source/At"]
