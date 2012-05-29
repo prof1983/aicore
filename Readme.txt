@@ -3,6 +3,7 @@ AiCore - core of AI system
 
 === .gitignore ===
 
+*.local
 *.user
 /.gitignore
 /.gitmodules
