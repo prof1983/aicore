@@ -40,6 +40,19 @@ compilestatic:
 	#ACoreLib-static.расширение (.a, .o, .so).
 	gcc -g -o ACoreLibTest_static ACoreLibTest.o -L. -lACoreLib-static
 
+compiledynamic:
+	#создаем объектный файл
+	gcc -Wall -g -c ACoreLibTest_dynamic.c
+	#-ldl - этот параметр обеспечивает обращение к библиотеке libdl, которая обеспечивает динамическое подгружение библиотек
+	gcc -g -o ACoreLibTest_dynamic ACoreLibTest_dynamic.o -ldl
+
+run:
+	#Для выполнения необходимо, чтобы в переменной окружения LD_LIBRARY_PATH были перечислены через ":" директории, в которых следует искать библиотеки. 
+	LD_LIBRARY_PATH="." ./ACoreLibTest
+
+	#Для того, чтобы определить с какими версиями библиотек скомпилирована программа, достаточно воспользоваться командой
+	LD_LIBRARY_PATH="." ldd ACoreLibTest
+
 runstatic:
 	#Выполнение исполняемого файла
 	./ACoreLibTest_static
@@ -50,8 +63,9 @@ clear:
 	rm ACoreLib-static.o
 
 clearbin:
-	rm ACoreLib
-	rm ACoreLib_static
+	rm ACoreLibTest
+	rm ACoreLibTest_dynamic
+	rm ACoreLibTest_static
 	rm ACoreLib.so
 	rm ACoreLib.so.0
 	rm ACoreLib.so.0.0
